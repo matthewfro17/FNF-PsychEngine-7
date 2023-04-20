@@ -3006,34 +3006,25 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset + 60;
+		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2 + 60;
 
 		if (health > 2)
 			health = 2;
 
 		if (healthBar.percent < 20)
-		{
 			iconP1.animation.curAnim.curFrame = 1;
-			FlxTween.tween(scoreTxt, {color:0xFFFF0000}, 0.05);
-		}
 		else if (healthBar.percent > 80)
-		{
 			iconP1.animation.curAnim.curFrame = 2;
-		}
 		else
-		{
 			iconP1.animation.curAnim.curFrame = 0;
-			FlxTween.tween(scoreTxt, {color:0xFFFFFFFF}, 0.03);
-		}
-
+		
 		if (healthBar.percent > 80)
 			iconP2.animation.curAnim.curFrame = 1;
 		else if (healthBar.percent < 20)
 			iconP2.animation.curAnim.curFrame = 2;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
-
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
